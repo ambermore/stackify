@@ -1,34 +1,35 @@
 {
-  "name": "stackify",
-  "version": "1.0.0",
-  "description": "Stackify is just more than promise.",
-  "main": "index.js",
-  "scripts": {
-    "test": "npm test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ambermore/stackify.git"
-  },
-  "keywords": [
-    "stackify",
-    "promise",
-    "array",
-    "node.js"
-  ],
-  "author": {
-    "name": "Amber More"
-  },
-  "license": [
-    {
-      "type": "MIT",
-      "url": ""
-    }
-  ],
-  "bugs": {
-    "url": "https://github.com/ambermore/stackify/issues"
-  },
-  "readme": "README.md",
-  "_id": "stackify@1.0.0",
-  "_from": "stackify@"
+    "name": "stackify",
+    "description": "Stackify is just more than promise.",
+    "version": "1.0.2",
+    "author": {
+        "name": "Amber More"
+    },
+    "keywords": [
+        "stackify",
+        "promise",
+        "async",
+        "rest",
+        "restful",
+        "node.js"
+    ],
+    "license": [{
+        "type": "MIT",
+        "url": ""
+    }],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ambermore/stackify"
+    },
+    "main": "index.js",
+    "engines": {
+        "node": "*"
+    },
+    "bugs": {
+        "url": "https://github.com/ambermore/stackify/issues"
+    },
+    "readme": "# stackify.js\n\nstackify.js is just more than promise. It provides you simple and effective way to handle asynchronous JavaScript. Inherited requests and configurable request slab are highlighted features of stackify.js. \n\n\n###Quick example\n```javascript\nvar stackify_test = new STACKIFY(function(index, stackify){\n    var item = stackify.item(index);\n    \n    your_async_function(function() {\n        console.log(item, ' process');\n        stackify.next(index, []);\n    });\n}, function(index, stackify) {\n    \n}, function(index, stackify) {\n    console.log('Execution got complete.');\n});\n\nstackify_test.process({\n    'items': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],\n    'slab': 3\n});\n\n\n```\n\n\nMore coming soon...",
+    "readmeFilename": "README.md",
+    "_id": "stackify@1.0.1",
+    "_from": "stackify@"
 }
