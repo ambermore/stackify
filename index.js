@@ -66,16 +66,12 @@ var STACKIFY = module.exports = function (rest_method, common_method, last_metho
             self.options.items = self.options.items || [];
             self.total_items = self.options.items.length;
             self.slab = options.slab || self.total_items;
-            if (self.slab == 0) {
-                self.slab = self.total_items;
-            }
+
             if (typeof (rest_method) == "function") self.rest_method = rest_method;
             if (typeof (common_method) == "function") self.common_method = common_method;
             if (typeof (last_method) == "function") self.last_method = last_method;
             if (typeof (name) == "string") self.name = name;
-            if (typeof (parent) != "undefined") {
-                self.parent = parent;
-            }
+            if (typeof (parent) != "undefined") self.parent = parent;
 
             rest_method = null, common_method = null, last_method = null, parent = null, name = "";
             self.init();

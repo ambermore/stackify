@@ -1,0 +1,28 @@
+# stackify.js
+
+stackify.js is just more than promise. It provides you simple and effective way to handle asynchronous JavaScript. Inherited requests and configurable request slab are highlighted features of stackify.js. 
+
+## Quick Examples
+
+```javascript
+var stackify_test = new STACKIFY(function(index, stackify){
+    var item = stackify.item(index);
+    
+    your_async_function(function() {
+        console.log(item, " process");
+        stackify.next(index, []);
+    });
+}, function(index, stackify) {
+    
+}, function(index, stackify) {
+	console.log("stackify.js tested.");
+});
+
+stackify_test.process({
+    "items": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "slab": 3
+});
+
+```
+
+More coming soon...

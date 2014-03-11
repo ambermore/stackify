@@ -16,9 +16,19 @@
     "array",
     "node.js"
   ],
-  "author": "Amber More",
-  "license": "BSD",
+  "author": {
+    "name": "Amber More"
+  },
+  "license": [
+    {
+      "type": "MIT",
+      "url": ""
+    }
+  ],
   "bugs": {
     "url": "https://github.com/ambermore/stackify/issues"
-  }
+  },
+  "readme": "README.md",
+  "_id": "stackify@1.0.0",
+  "_from": "stackify@"
 }
