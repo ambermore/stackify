@@ -1,0 +1,24 @@
+{
+  "name": "stackify",
+  "version": "1.0.0",
+  "description": "Stackify is just more than promise.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ambermore/stackify.git"
+  },
+  "keywords": [
+    "stackify",
+    "promise",
+    "array",
+    "node.js"
+  ],
+  "author": "Amber More",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/ambermore/stackify/issues"
+  }
+}
