@@ -16,24 +16,25 @@ For client side html
 
 ###Quick start:
 ```javascript
-// Example for definning stackify processor.
+// Example for defining stackify processor.
 var stackify_processor = new STACKIFY(function(index, stackify){
     // Your current processing item, you can use this for your rest function.
     var item = stackify.item(index);
     
     your_rest_function(item, function(output) {
-        // This will ask stackify to run processor against next item.
+        // It will ask stackify to run processor against next item.
         stackify.next(index, output);
     });
 }, function(index, stackify) {
     // You can place common code over here, 
     // which needs to be run after processing of each item.
-    // Current reqest object.
+    // It will give current request object.
     var current_request = stackify.request(index);
     
-    // Current request output if any.
+    // It will give current request output if any.
     var output = current_request.output;
-    // Current request error if any.
+    
+    // It will give current request error if any.
     var error = current_request.error;
 }, function(index, stackify) {
     // Your last code of execution.
@@ -49,7 +50,7 @@ stackify_processor.process({
 
 ```
 
-Above request processor can be use with different item collection any where else.
+Above request processor can be used with different item collection, somewhere else.
 ```javascript
 // We will run this processor with different item collection.
 stackify_processor.process({
@@ -70,13 +71,13 @@ stackify_processor.process({
     }
     // Here we specified other optional data, that we can use in our processor.
     // If we will not specify slab it will parallelly process all items. 
-    // Quick hack: For same we can spcify slab as 0.
+    // Quick hack: For same we can specify slab as 0.
 });
 ```
 
 To use optional parameters or data, we need to do little change in our processor.
 ```javascript
-// So our change procesor will be as
+// So our change processor will be as
 var stackify_processor = new STACKIFY(function(index, stackify){
     // Your current processing item, you can use this for your rest function.
     var item = stackify.item(index);
@@ -105,7 +106,7 @@ var stackify_processor = new STACKIFY(function(index, stackify){
     
 }, function(index, stackify) {
     // Your last code of execution.
-    // So we can have all requests` ouput or error at last by
+    // So we can have all requests` output  or error at last by
     var requests = stackify.requests;
 });
 ```
@@ -129,7 +130,7 @@ var stackify_child_processor = new STACKIFY(function(index, stackify){
 }, 'stackify_child_processor');
 // Now here we specified processor name 'stackify_child_processor', this is optional.
 
-// So our change procesor will be as
+// So our change processor will be as
 var stackify_parent_processor = new STACKIFY(function(index, stackify){
     // Your current processing item, you can use this for your rest function.
     var item = stackify.item(index);
@@ -148,10 +149,10 @@ var stackify_parent_processor = new STACKIFY(function(index, stackify){
     });
 }, function(index, stackify) {
     // Now, in this case we will have actual use of this method.
-    // Since, we can not write our common execution code in rest callback.
+    // Since, we cannot write our common execution code in rest callback.
 }, function(index, stackify) {
     // Your last code of execution.
-    // So we can have all requests` ouput or error at last by
+    // So, we can have all requests` output or error at last by
     var requests = stackify.requests;
 }, 'stackify_parent_processor');
 ```
@@ -164,7 +165,7 @@ How we can support our old code, we can do this by-
     // This will be forward to next then method.
     return 10;
 }).then(function(value) {
-	console.log(new Date());
+    console.log(new Date());
     console.log('Earlier request output: ', value);
 	return value + 20;
 }).then(function(value) {
@@ -178,7 +179,7 @@ How we can support our old code, we can do this by-
 });
 ```
 
-For handling our rest callback, we need to pass options to STACKIFY constuctor.
+For handling our rest callback, we need to pass options to STACKIFY constructor.
 ```javascript
 // Here we are passing require_next as 'true'.
 (new STACKIFY({
@@ -202,7 +203,7 @@ For handling our rest callback, we need to pass options to STACKIFY constuctor.
     });
 }).catch(function(requests, halt_execution_at) {
     // In case of any error, this will get executed.
-    // 'halt_execution_at' will give us index at which exceution got halt.
+    // 'halt_execution_at' will give us index at which execution got halt.
     console.log('Execution halt at: ', halt_execution_at);
     console.log('Error: ', requests[halt_execution_at].error);
 }).done(function(requests) {
@@ -227,7 +228,7 @@ We can also pass collection of methods to our processor by .all method.
     return value + 30;
 }).catch(function(requests, halt_execution_at) {
     // In case of any error, this will get executed.
-    // 'halt_execution_at' will give us index at which exceution got halt.
+    // 'halt_execution_at' will give us index at which execution got halt.
 }).done(function(requests) {
 	// This will get executed at last.
 });
@@ -253,13 +254,13 @@ Again, if we need to delay our next execution we can do that with .delay method.
     return value + 30;
 }).catch(function(requests, halt_execution_at) {
     // In case of any error, this will get executed.
-    // 'halt_execution_at' will give us index at which exceution got halt.
+    // 'halt_execution_at' will give us index at which execution got halt.
 }).done(function(requests) {
 	// This will get executed at last.
 });
 ```
 
-####Till now thats all, Thanks Folks!
+####Till now that’s all, Thanks Folks!
 
 
 ###License
