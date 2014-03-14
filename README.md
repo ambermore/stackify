@@ -130,7 +130,7 @@ var stackify_child_processor = new STACKIFY(function(index, stackify){
 }, 'stackify_child_processor');
 // Now here we specified processor name 'stackify_child_processor', this is optional.
 
-// So our change processor will be as
+// This will be our parent processor.
 var stackify_parent_processor = new STACKIFY(function(index, stackify){
     // Your current processing item, you can use this for your rest function.
     var item = stackify.item(index);
@@ -201,11 +201,11 @@ For handling our rest callback, we need to pass options to STACKIFY constructor.
     your_rest_function(value, function(output) {
         next(output);
     });
-}).catch(function(requests, halt_execution_at) {
+}).catch(function(requests, execution_halt_at) {
     // In case of any error, this will get executed.
-    // 'halt_execution_at' will give us index at which execution got halt.
-    console.log('Execution halt at: ', halt_execution_at);
-    console.log('Error: ', requests[halt_execution_at].error);
+    // 'execution_halt_at' will give us index at which execution got halt.
+    console.log('Execution halt at: ', execution_halt_at);
+    console.log('Error: ', requests[execution_halt_at].error);
 }).done(function(requests) {
 	// This will get executed at last.
 });
@@ -226,9 +226,9 @@ We can also pass collection of methods to our processor by .all method.
     console.log(new Date());
     console.log('Earlier request output: ', value);
     return value + 30;
-}).catch(function(requests, halt_execution_at) {
+}).catch(function(requests, execution_halt_at) {
     // In case of any error, this will get executed.
-    // 'halt_execution_at' will give us index at which execution got halt.
+    // 'execution_halt_at' will give us index at which execution got halt.
 }).done(function(requests) {
 	// This will get executed at last.
 });
@@ -252,9 +252,9 @@ Again, if we need to delay our next execution we can do that with .delay method.
     console.log(new Date());
     console.log('Earlier request output: ', value);
     return value + 30;
-}).catch(function(requests, halt_execution_at) {
+}).catch(function(requests, execution_halt_at) {
     // In case of any error, this will get executed.
-    // 'halt_execution_at' will give us index at which execution got halt.
+    // 'execution_halt_at' will give us index at which execution got halt.
 }).done(function(requests) {
 	// This will get executed at last.
 });
@@ -264,4 +264,4 @@ Again, if we need to delay our next execution we can do that with .delay method.
 
 
 ###License
-Copyright 2014, Amber More MIT License (enclosed)
+Copyright 2014, Amber More - MIT License (enclosed)
