@@ -167,7 +167,7 @@ How we can support our old code, we can do this by-
 }).then(function(value) {
     console.log(new Date());
     console.log('Earlier request output: ', value);
-	return value + 20;
+    return value + 20;
 }).then(function(value) {
     console.log(new Date());
     console.log('Earlier request output: ', value);
@@ -175,7 +175,7 @@ How we can support our old code, we can do this by-
 }).catch(function(requests) {
     // In case of any error, this will get executed.
 }).done(function(requests) {
-	// This will get executed at last.
+        // This will get executed at last.
 });
 ```
 
@@ -189,11 +189,11 @@ For handling our rest callback, we need to pass options to STACKIFY constructor.
 })).then(function(value, next) {
     console.log(new Date());
     // This will be forward to next then method.
-	next(10);
+        next(10);
 }).then(function(value, next) {
-	console.log(new Date());
+        console.log(new Date());
     console.log('Earlier request output: ', value);
-	next(20);
+        next(20);
 }).then(function(value, next) {
     console.log(new Date());
     console.log('Earlier request output: ', value);
@@ -207,30 +207,33 @@ For handling our rest callback, we need to pass options to STACKIFY constructor.
     console.log('Execution halt at: ', execution_halt_at);
     console.log('Error: ', requests[execution_halt_at].error);
 }).done(function(requests) {
-	// This will get executed at last.
+        // This will get executed at last.
 });
 ```
 
 We can also pass collection of methods to our processor by .all method.
 ```javascript
-// This can be handle by passing option require_next as 'true'.
 (new STACKIFY()).all([function(value) {
     console.log(new Date());
     // This will be forward to next then method.
-	return 10;
+        return 10;
 }, function(value) {
-	console.log(new Date());
+        console.log(new Date());
     console.log('Earlier request output: ', value);
-	return value + 20;
+        return value + 20;
 }, function(value) {
     console.log(new Date());
     console.log('Earlier request output: ', value);
     return value + 30;
+}]).then(function(value) {
+    console.log(new Date());
+    console.log('Earlier request output: ', value);
+    return value + 40;
 }).catch(function(requests, execution_halt_at) {
     // In case of any error, this will get executed.
     // 'execution_halt_at' will give us index at which execution got halt.
 }).done(function(requests) {
-	// This will get executed at last.
+        // This will get executed at last.
 });
 
 // Quick hack: With this, we can also use 'require_next' and other options.
@@ -241,13 +244,13 @@ Again, if we need to delay our next execution we can do that with .delay method.
 (new STACKIFY()).then(function(value) {
     console.log(new Date());
     // This will be forward to next then method.
-	return 10;
+        return 10;
 })
 // This will delay next execution for 10 seconds.
 .delay(10000).then(function(value) {
-	console.log(new Date());
+        console.log(new Date());
     console.log('Earlier request output: ', value);
-	return value + 20;
+        return value + 20;
 }).then(function(value) {
     console.log(new Date());
     console.log('Earlier request output: ', value);
@@ -256,7 +259,7 @@ Again, if we need to delay our next execution we can do that with .delay method.
     // In case of any error, this will get executed.
     // 'execution_halt_at' will give us index at which execution got halt.
 }).done(function(requests) {
-	// This will get executed at last.
+        // This will get executed at last.
 });
 ```
 
